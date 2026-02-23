@@ -4,6 +4,12 @@ pipeline {
 environment{
         App_Env="staging"
         }
+        options {
+        timeout(time: 2, unit: 'SECONDS')
+        buildDiscarder(logRotator(numToKeepStr: '4'))
+    }
+
+
     stages {
         stage("stage num 1") {
             steps {
