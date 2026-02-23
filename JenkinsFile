@@ -9,7 +9,21 @@ environment{
         buildDiscarder(logRotator(numToKeepStr: '4'))
     }
 
-
+stage('learn credentials') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: '1',
+                        usernameVariable: 'USER',
+                        passwordVariable: 'PASS'
+                    )
+                ]) {
+                    bat '''
+                        echo Deploying as %USER% %PASS%
+                    '''
+                }
+            }
+        }
     stages {
         stage("stage num 1") {
             steps {
