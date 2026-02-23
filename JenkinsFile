@@ -9,7 +9,10 @@ environment{
         buildDiscarder(logRotator(numToKeepStr: '4'))
     }
 
-stage('learn credentials') {
+
+    stages {
+
+    stage('learn credentials') {
             steps {
                 withCredentials([
                     usernamePassword(
@@ -24,7 +27,7 @@ stage('learn credentials') {
                 }
             }
         }
-    stages {
+
         stage("stage num 1") {
             steps {
                 echo "hello world"
