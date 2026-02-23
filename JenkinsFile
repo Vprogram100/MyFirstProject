@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
+environment{
+        App_Env="staging"
+        }
     stages {
         stage("stage num 1") {
             steps {
                 echo "hello world"
+                echo "$ App_Env"
             }
         }
 
@@ -33,5 +37,8 @@ pipeline {
                 echo "the test true"
             }
         }
+
+
+
     }
 }
